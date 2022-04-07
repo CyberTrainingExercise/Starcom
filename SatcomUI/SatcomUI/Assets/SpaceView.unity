@@ -454,7 +454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Connection: unknown'
+  m_text: 'DLAB Connection: unknown'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b3602c0f6d0b0ab48dbbc94ea9e0ed9, type: 2}
   m_sharedMaterial: {fileID: -6502808831177099219, guid: 7b3602c0f6d0b0ab48dbbc94ea9e0ed9, type: 2}
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   satAnimators:
   - {fileID: 324416996}
   - {fileID: 1178487268}
-  - {fileID: 1178487268}
+  - {fileID: 1990772869}
   satSprites:
   - {fileID: 324416997}
   - {fileID: 1178487269}

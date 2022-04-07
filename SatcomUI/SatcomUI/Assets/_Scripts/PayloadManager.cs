@@ -48,7 +48,7 @@ public class PayloadManager : MonoBehaviour
         if (timeInPeriod < 10)
         {
             // sat0
-            connectionText.text = "Connection Status: " + data.status0;
+            connectionText.text = "DLAB Connection Status: " + data.status0;
             warningText.SetActive(data.IsOnline(0));
             if (data.IsOnline(0))
             {
@@ -77,7 +77,7 @@ public class PayloadManager : MonoBehaviour
         } else if (timeInPeriod < 20)
         {
             // sat1
-            connectionText.text = "Connection Status: " + data.status1;
+            connectionText.text = "DLAB Connection Status: " + data.status1;
             warningText.SetActive(data.IsOnline(1));
             if (data.IsOnline(1))
             {
@@ -105,7 +105,7 @@ public class PayloadManager : MonoBehaviour
             }
         } else {
             // sat2
-            connectionText.text = "Connection Status: " + data.status2;
+            connectionText.text = "DLAB Connection Status: " + data.status2;
             warningText.SetActive(data.IsOnline(2));
             if (data.IsOnline(2))
             {
