@@ -181,7 +181,7 @@ def main():
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.settimeout(1)
-        sock.bind(('localhost', SERVER_PORT))
+        sock.bind(('0.0.0.0', SERVER_PORT))
         sock.listen(MAX_CONNECTIONS)
     except Exception as e:
         print("Error creating socket:", e)
