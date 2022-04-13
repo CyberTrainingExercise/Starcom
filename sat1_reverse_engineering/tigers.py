@@ -40,7 +40,6 @@ class client_thread(threading.Thread):
         self.conn.sendall(create_message_packet("Connected to server"))
 
     def get_thread_status(self):
-        #print("Status:", self.thread_active)
         return self.thread_active
              
     def run(self):
@@ -52,9 +51,8 @@ class client_thread(threading.Thread):
         # target function of the thread class
         try:
             while(not RECV_SIGNAL and self.thread_active):
-                #print("Top loop:", missing_data, len(next_packet), "---", next_packet)
                 if (missing_data <= 0):
-                    # if there i sno missing data
+                    # if there is no missing data
                     if (len(next_packet) >= PACKET_HEADER_DATA_LEN):
                         # if the next packet is big enough to contain a full header
                         data = next_packet
@@ -68,7 +66,6 @@ class client_thread(threading.Thread):
                             continue
                     if (len(data) == 0):
                         continue
-                    #print("Data:", data)
                     packet_type, header_length, header_data, next_packet = parse_header(data)
                     # calculate any missing data
                     missing_data = header_length - len(header_data)
@@ -78,44 +75,33 @@ class client_thread(threading.Thread):
                     except socket.timeout:
                         continue
                     header_data = decode_data(data)
-                    #print("Using missing data:", missing_data, len(header_data), missing_data - len(header_data), "---", header_data)
                     missing_data -= len(header_data)
                     if (missing_data < 0): # in case this next packet contains the end of current packet and a new packet
                         next_packet = data[-missing_data:] # double negative
                     else:
                         next_packet = str.encode("")
-                #print("Packet info:", packet_type, header_length, header_data, next_packet)
                 if (packet_type == PACKET_TYPE_CONNECTION):
                     username, password = self.parse_username_password(header_data)
-                    #print("Username:", username, "Password:", password)
                     if (username not in self.passwords or self.passwords[username] != password):
                         # invalid username
                         self.conn.sendall(create_message_packet("Invalid username or password"))
                 elif (packet_type == PACKET_TYPE_GET):
                     # load a file and send it over
-                    #print("Sending file:", header_data)
                     self.conn.sendall(create_put_packet(header_data))
                     file = open(header_data, "r")
                     for line in file:
-                        #print("Sending line:", line)
-                        #print("Line size:", len(line), len(str.encode(line)))
                         self.conn.sendall(create_transfer_packet(line))
-                    #print("Sending EOF")
                     self.conn.sendall(create_finish_transfer_packet())
                 elif (packet_type == PACKET_TYPE_PUT):
                     # download file
-                    #print("Downloading file:", header_data)
                     self.file = open(header_data, "w")
                 elif (packet_type == PACKET_TYPE_TRANSFER):
-                    #print("Transfering data")
                     self.file.write(header_data)
                 elif (packet_type == PACKET_TYPE_FINISH_TRANSFER):
-                    #print("Closing file")
                     self.file.close()
                     self.file = None
                 elif (packet_type == PACKET_TYPE_EXIT):
                     # close this connection and stop this thread
-                    #print("Exiting thread")
                     self.clean()
                 elif (packet_type == PACKET_TYPE_ABORT):
                     SAT_SIGNAL = False
@@ -154,7 +140,6 @@ def load_passwords():
         password = line.split(":")[1].strip()
         passwords[username] = password
     file.close()
-    #print("Passwords", passwords)
     return passwords
 
 def serve_client(conn, client_addr):
