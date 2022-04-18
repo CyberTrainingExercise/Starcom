@@ -4,7 +4,7 @@ import time
 # satellite apiserver configuration
 url = "http://localhost:5001/status"
 status = {
-    "status0":"ok",
+    "status2":"ok",
 }
 
 while (True):
