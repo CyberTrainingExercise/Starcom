@@ -7,7 +7,8 @@ COPY logs/ /webserver/logs/
 COPY index.html /webserver
 COPY satellite.py /webserver
 
+# add login .env creds here
 # RUN adduser admin
 # USER admin
 WORKDIR /webserver
-ENTRYPOINT ["cd /webserver"]
+ENTRYPOINT ["python3", "-m", "http.server"]
