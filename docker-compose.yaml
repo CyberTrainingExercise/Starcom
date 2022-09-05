@@ -1,0 +1,24 @@
+version: '3.7'
+
+networks:
+ starcom:
+
+services:
+  starcom0:
+    image: ubuntu
+    container_name: starcom0
+    networks:
+      - starcom
+    restart: unless-stopped
+  starcom1:
+    image: ubuntu
+    container_name: starcom1
+    networks:
+      - starcom
+    restart: unless-stopped
+  starcom2:
+    image: ubuntu
+    container_name: starcom2
+    networks:
+      - starcom
+    restart: unless-stopped

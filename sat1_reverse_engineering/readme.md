@@ -1,8 +1,8 @@
 # Tiger FTP System
 
-Custom concurrent FTP server and client written in python using TCP sockets.
+Custom concurrent FTP server and client written in Python using TCP sockets.
 
-This code is being used to teach reverse engineering in a Cyber Training Exercise (CTX2).
+This code is being used to teach reverse engineering for CTX Starcom.
 
 ## Mission
 
@@ -32,7 +32,7 @@ There are 3 main files, `tigers.py`, `tigerc.py`, and `tigershared.py`.
 
 These correspond to the server application, client application, and shared library.
 
-Additionally, `tigerc_noabort.py` and `tigershared.py` is the client and shared library without the abort feature implemented.
+Additionally, `tigerc_noabort.py` and `tigershared_noabort.py` is the client and shared library without the abort feature implemented.
 
 #### Server Application
 
@@ -83,4 +83,4 @@ Protocol types, their data, and their usage:
 5. transfer <filedata>                      used to transfer file data
 6. finish transfer                          used to denote the end of a file transfer
 7. message <message>                        used to send a message to the client, client displays these to the user
-8. abort                                    used to abort the servers satcom connection
+8. abort                                    used to abort the servers starcom connection

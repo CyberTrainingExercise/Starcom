@@ -66,7 +66,6 @@ class input_thread(threading.Thread):
                         file = open(data[0], "r")
                         for line in file:
                             packet = create_transfer_packet(line)
-                            #print("Packet:", packet)
                             SOCK.sendall(packet)
                         SOCK.sendall(create_finish_transfer_packet())
                         print("File sent")
@@ -130,13 +129,11 @@ def main():
                 except socket.timeout:
                     continue
                 header_data = decode_data(data)
-                #print("Using missing data:", missing_data, len(header_data), missing_data - len(header_data), "---", header_data)
                 missing_data -= len(header_data)
                 if (missing_data < 0): # in case this next packet contains the end of current packet and a new packet
                     next_packet = data[-missing_data:] # double negative
                 else:
                     next_packet = str.encode("")
-            #print("Packet info:", packet_type, header_length, header_data, next_packet)
             if (packet_type == PACKET_TYPE_EXIT):
                 print("Connection closed by server")
                 SOCK.close()
@@ -147,7 +144,6 @@ def main():
                 file = open(header_data, "w")
             elif (packet_type == PACKET_TYPE_TRANSFER):
                 # response to a get
-                #print("Saving file")
                 file.write(header_data)
             elif (packet_type == PACKET_TYPE_FINISH_TRANSFER):
                 print("File had been downloaded")

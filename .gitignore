@@ -2,3 +2,4 @@ __pycache__
 passwords.txt
 /SatcomUI/font*
 /Images
+*.drawio.bkp
