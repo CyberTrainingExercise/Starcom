@@ -5,7 +5,7 @@ networks:
 
 services:
   status:
-    build: .
+    build: status_server/
     container_name: status
     ports:
     - "5001:5001"
