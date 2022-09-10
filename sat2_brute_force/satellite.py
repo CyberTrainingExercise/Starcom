@@ -2,7 +2,7 @@ import requests
 import time
 
 # satellite apiserver configuration
-url = "http://localhost:5001/status"
+url = "http://status:5001/status"
 status = {
     "status2":"ok",
 }

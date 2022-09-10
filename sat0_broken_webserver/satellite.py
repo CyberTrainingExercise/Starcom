@@ -3,7 +3,7 @@ import time
 
 # satellite apiserver configuration
 # this will need to be updated with a new ip address
-url = "http://localhost:5001/status"
+url = "http://status:5001/status"
 status = {
     "status0":"ok",
 }

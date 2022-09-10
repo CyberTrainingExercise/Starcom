@@ -180,7 +180,7 @@ def main():
     passwords = load_passwords()
     threads = list()
 
-    sat = sat_thread("http://localhost:5001/status")
+    sat = sat_thread("http://status:5001/status")
     sat.start()
 
     while (not RECV_SIGNAL):

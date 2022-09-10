@@ -12,7 +12,7 @@
 
 I wanted to make a special note on this CTX about realism. The technology of this CTX is real in that these technologies are used to professionally hack things, but it is not real in that satellites are not accessible via SSH/Dirb/FTP over the open internet. In addition, most satellites aren't running a webserver, an FTP server, or a linux operating system.
 
-With all that in mind, this CTX aims to provide value by giving cadets a look into what pentesting common systems looks like.
+With all that in mind, this CTX aims to provide value by giving cadets a look into what pentesting common systems looks like. It also aims to provide value by providing them with an engaging look into a space themed CTX.
 
 ### Objectives
 
@@ -22,7 +22,7 @@ Technical Objectives:
 1. Port scanning
 1. Reverse engineering
 1. FTP servers
-1. Atacking web services
+1. Attacking web services
 1. SSH
 
 Tools:

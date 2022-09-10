@@ -1,10 +1,10 @@
 version: '3.7'
 
 networks:
-  starcom: {}
+  starcom:
 
 services:
-  sat0:
+  status:
     build: .
     container_name: status
     ports:
@@ -16,7 +16,7 @@ services:
     build: sat0_broken_webserver/
     container_name: sat0
     ports:
-    - "80:80"
+    - "8000:8000"
     - "22:22"
     networks:
       - starcom
@@ -35,7 +35,7 @@ services:
     build: sat2_brute_force/
     container_name: sat2
     ports:
-    - "5022:5022"
+    - "5022:22"
     networks:
       - starcom
     restart: unless-stopped
