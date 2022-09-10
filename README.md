@@ -1,6 +1,6 @@
 ## Operation Starcom
 
-3 satellites will be running as a set of virtual machines on a master laptop, each of them will have a set of vulnerabilities that will allow remote access from the cadets. A UI display will show the status of all the satellites and their connection with the DLAB (where the cadets are hacking from).
+3 satellites will be running as a set of docker containers, each of them will have a set of vulnerabilities that will allow remote access from the cadets. A UI display will show the status of all the satellites and their connection with the Starcom Command Center (where the cadets are hacking from).
 
 1. One of the satellites (starcom0) will be running a vulnerable web application that contains logs of passwords. Directory brute forcing and log examining will lead to an SSH login being obtained.
 
@@ -18,6 +18,29 @@ With all that in mind, this CTX aims to provide value by giving cadets a look in
 
 Estimated Time: 1.5 hours
 
+
+Estimated skills (see [skill levels](https://github.com/CyberTrainingExercise/Docs/blob/master/ctx_requirements.md) for meaning)
+- Programming skills required (0-3)
+    - 2
+- System adminitration skills required (0-3)
+    - 2
+- Pentesting skills required (0-3)
+    - 2
+
+Skills required for Admin:
+- Python
+- Linux
+- Docker
+- Kali (John the Ripper, dirb, and nmap)
+- Webservers
+- Representational state transfer (REST)
+
+
+Time requirements (Recommended):
+- 1.5 hrs total
+    - 15 for briefing / planning
+    - 75 for execution
+
 Technical Objectives:
 1. Port scanning
 1. Reverse engineering
@@ -25,13 +48,20 @@ Technical Objectives:
 1. Attacking web services
 1. SSH
 
-Tools:
-1. Machine capable of running at least 2 VMs and a Unity Executable
-1. Machine capable of running Kali
-1. Machine capable of running Python3 and a code editor
-1. USB Stick
+## Requirements
 
-Setup:
+1. Machine capable of running Docker and a Unity Executable
+1. At least 1 machine capable of running Kali, Python3, and a code editor
+    - A minimum of 2 is recommended as these tools will be needed to take down sat0 and sat1, but 3-4 might be helpful for larger groups.
+1. USB Stick
+1. Duckies for FTX small unit tactics
+
+## Expected Design
+
+This CTX is designed as part of a larger scale FTX. It was initially designed as a subsection of a 4hr FTX for RIT's Spring 2022 FTX. The goal was to introduce basic hacking skills in a Space Force themed enviroment.
+
+The recommended team size is 5-10, with at least several members being skilled technically. The Leader is expected to juggle these technical tasks with the real world FTX tasks.
+
 
 ### Scenario
 
@@ -65,27 +95,38 @@ Do you have any questions?
 
 ```
 
-### Virtual Machine Setup
+## Difficulty Dials
 
-All the virtual machine setup for this particular CTX are required to be Linux based. Linux Mint 20 is recommended, but various other forms of Linux will work as well. This guide will assume you are using Linux Mint 20 and VirtualBox. Both of these were chosen as they are easy to use, free, open source, and work well on multiple host operating systems.
+To add difficulty, simple add or remove the amount of technical help they can have.
+
+## Docs
+
+WORK IN PROGRESS
+
+## Setup
+
+Please use the following system diagram to help inform your setup.
+
+![System Diagram](system_diagram.drawio.png)
+
+1. Install Docker, Docker-Compose, and Python3 on the Admin PC.
+1. Run `docker-compose up -d --build`
+    - You should get all 4 containers with a green `done`
+1. Run the Starcom UI
+    - Verify that all the status's are `ok`
+1. Gather IP addresses
+1. Load them onto the encrypted zip file `zip -e secret_files.zip file1.txt`
 
 ### Onsite Setup
 
-1. Turn on Kali machine, Python machine, and UI/VM Machine
-2. Run the Starcom UI
-3. Run the Status Server with `./run_status_server.sh`
-4. Run the starcom0 VM
-    - See the Virtual Machine Setup Guide for help on how to do this.
-5. Edit the IP and run `python3 satellite.py` on the VM
-6. Run the webserver with `sudo ./run_server.sh` on the VM
-7. Run the starcom1 FTP server
-8. Run the starcom2 VM
-9. Edit the IP and run `python3 satellite.py` on the VM
-10. Gather IP addresses and add to mission statements
-11. Load the onto zip file `zip -e secret_files.zip file1.txt`
-12. Put zip file on the USB
-13. Verify code is on Python machine with Python/VSCode
-14. Verify UI is working
-15. Verify Kali machine is working
-16. Verify FTP client can connect
-17. Give brief
+1. Turn on the Admin PC
+1. Run `docker-compose up -d`
+1. Gather IP addresses
+1. Load them onto the encrypted zip file `zip -e secret_files.zip file1.txt`
+1. Verify code is on Python machine with Python/VSCode
+1. Verify FTP client can connect to sat1
+    - Run the code and try to send a file
+1. Verify SSH works for both sat0 and sat2
+1. Verify the Webserver is running on port 8000 for sat0
+    - Visit `ip:8000` in the browser
+1. Give briefing
