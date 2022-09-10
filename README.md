@@ -1,4 +1,4 @@
-## Operation Starcom
+# Operation Starcom
 
 3 satellites will be running as a set of docker containers, each of them will have a set of vulnerabilities that will allow remote access from the cadets. A UI display will show the status of all the satellites and their connection with the Starcom Command Center (where the cadets are hacking from).
 
@@ -14,7 +14,7 @@ I wanted to make a special note on this CTX about realism. The technology of thi
 
 With all that in mind, this CTX aims to provide value by giving cadets a look into what pentesting common systems looks like. It also aims to provide value by providing them with an engaging look into a space themed CTX.
 
-### Objectives
+## Objectives
 
 Estimated Time: 1.5 hours
 
@@ -63,7 +63,7 @@ This CTX is designed as part of a larger scale FTX. It was initially designed as
 The recommended team size is 5-10, with at least several members being skilled technically. The Leader is expected to juggle these technical tasks with the real world FTX tasks.
 
 
-### Scenario
+## Scenario
 
 Team is briefed with the following.
 
@@ -110,19 +110,22 @@ Please use the following system diagram to help inform your setup.
 ![System Diagram](system_diagram.drawio.png)
 
 1. Install Docker, Docker-Compose, and Python3 on the Admin PC.
+1. Install Kali and verify `dirb`, `john`, and `nmap` commands work.
 1. Run `docker-compose up -d --build`
     - You should get all 4 containers with a green `done`
 1. Run the Starcom UI
-    - Verify that all the status's are `ok`
-1. Gather IP addresses
-1. Load them onto the encrypted zip file `zip -e secret_files.zip file1.txt`
+    - Verify that all the status's on the UI are `ok`
+    - Run `docker-compose down` and wait for Docker to take the containers down
+    - Verify that all the statu's on the UI are `offline`
 
-### Onsite Setup
+## Onsite Setup
 
 1. Turn on the Admin PC
 1. Run `docker-compose up -d`
-1. Gather IP addresses
-1. Load them onto the encrypted zip file `zip -e secret_files.zip file1.txt`
+1. Gather IP address of the Admin PC
+    - Since this isn't a static IP (unless you own the network and can assign it), it *could* change. This is unlikely and based on the network's DHCP server. But be prepared if the IP address does not work to give the cadets the new IP if they need it.
+1. Load it onto the encrypted zip file `zip -e secret_files.zip file1.txt`
+1. Load the encrypted zip file onto the USB
 1. Verify code is on Python machine with Python/VSCode
 1. Verify FTP client can connect to sat1
     - Run the code and try to send a file
