@@ -7,7 +7,7 @@ import threading
 import requests
 from client.tigershared import *
 
-MAX_CONNECTIONS = 300
+MAX_CONNECTIONS = 10
 RECV_SIGNAL = False
 SAT_SIGNAL = True
 
