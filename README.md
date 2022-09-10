@@ -38,8 +38,13 @@ Skills required for Admin:
 
 Time requirements (Recommended):
 - 1.5 hrs total
-    - 15 for briefing / planning
-    - 75 for execution
+    - 15 mins for briefing / planning
+    - 75 mins for execution
+
+Manpower requirements (Recommended):
+- 7-10 Participants
+- 1 Admin
+- 3-5 Opfor
 
 Technical Objectives:
 1. Port scanning
