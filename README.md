@@ -8,6 +8,14 @@
 
 3. Lastly, the final satellite (starcom2) will only be vulnerable when access to a physical USB is obtained. This will be done by a mission scenario with a high value target who is carrying it. After this, the satellite will be taken offline via John the Ripper and SSH.
 
+Starcom UI with all 3 satellites online:
+
+![image](images/StarcomUI.gif)
+
+Starcom UI with 1 satellite offline:
+
+![image](images/StarcomUI1Offline.gif)
+
 ## Authors Note
 
 I wanted to make a special note on this CTX about realism. The technology of this CTX is real in that these technologies are used to professionally hack things, but it is not real in that satellites are not accessible via SSH/Dirb/FTP over the open internet. In addition, most satellites aren't running a webserver, an FTP server, or a linux operating system.
