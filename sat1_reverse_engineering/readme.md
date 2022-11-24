@@ -20,18 +20,19 @@ Various levels of difficulty are possible:
 
 Additional challenge can come from making the `passwords.txt` file secret or utilizing a side-mission to discover the password.
 
-## Note
+# IMPORTANT NOTE
 
-Below is the documentation for building and testing the code. Please refer to the Starcom main readme for details on how this is being run within context of the whole scenario.
+> Below is the documentation for building and testing the code. Please refer to the Starcom main readme for details on how this is being run within context of the whole scenario.
 
-## Build System
+### Build System
 
 Run the server with `python3 tigers.py` and `python3 tigerc.py`
 
 Feel free to include your first command to `tigerc` in the command line like so:
 `python3 tigerc.py connect localhost user pass`
 
-The server is in the root directory and the client is in a directory below. Due to some annoying quirks with python I was not able to get them to run in the same level of directory without duplicating the `tigershared.py` code. I figured it would be cleaner to have the shared code just in the project once so I left it this way.
+The server is in the root directory and the client/shared library are in a directory below.
+
 ### Project Structure
 
 There are 3 main files, `tigers.py`, `tigerc.py`, and `tigershared.py`.
@@ -44,7 +45,7 @@ Additionally, `tigerc_noabort.py` and `tigershared_noabort.py` is the client and
 
 The server runs a main thread which accepts connections, on each reception of a connection is starts a new thread which handles the client that was trying to connect. The client thread handles all requests from the client and closes itself when the client exits.
 
-The sever reads the client usernames and passwords from the file `passwords.txt`
+The server reads the client usernames and passwords from the file plain text `passwords.txt`.
 
 #### Client Application
 
@@ -61,11 +62,12 @@ This library contains helpful functions for that both the client and server need
 ### Transport Protocol
 
 This project uses TCP as the transport protocol.
+
 ### Concurrency
 
 Concurrency was implemented using multithreading with the standard threading library that python provides. As detailed in the Server Application section, the server creates a new thread for each client and uses that to respond to that clients requests.
 
-## Command and Control Protocol
+### Command and Control Protocol
 
 The protocol is fairly simple. It has a header with a packet type, a data length, and then the data. The details of these can be found below.
 
