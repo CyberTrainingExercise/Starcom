@@ -4,3 +4,4 @@ passwords.txt
 /Images
 *.drawio.bkp
 *.drawio.dtmp
+authorized_keys

@@ -17,7 +17,7 @@ services:
     container_name: sat0
     ports:
     - "8000:8000"
-    - "1022:22"
+    - "5021:22"
     networks:
       - starcom
     restart: unless-stopped
