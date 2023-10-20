@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting SSH service on port 8022"
+echo "Starting SSH service on port 22"
 /etc/init.d/ssh restart
 echo "Starting status service"
 python3 satellite.py & # Run the status requests in the background

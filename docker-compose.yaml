@@ -17,7 +17,7 @@ services:
     container_name: sat0
     ports:
     - "8000:8000"
-    - "22:22"
+    - "5021:22"
     networks:
       - starcom
     restart: unless-stopped
@@ -26,6 +26,8 @@ services:
   sat1:
     build: sat1_reverse_engineering/
     container_name: sat1
+    ports:
+    - "7777:7777"
     networks:
       - starcom
     restart: unless-stopped
