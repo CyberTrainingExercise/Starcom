@@ -5,7 +5,7 @@ import time
 # this will need to be updated with a new ip address
 url = "http://status:5001/status"
 status = {
-    "status0":"ok",
+    "status0":"OPERATIONAL",
 }
 
 while (True):

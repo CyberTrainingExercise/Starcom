@@ -18,7 +18,7 @@ class sat_thread(threading.Thread):
         # satellite apiserver configuration
         self.url = url
         self.status = {
-            "status1":"ok",
+            "status1":"OPERATIONAL",
         }
 
     def run(self):
